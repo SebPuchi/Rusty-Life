@@ -1,4 +1,5 @@
 use grid::Grid;
+use clap::Parser;
 
 mod grid;
 mod display;
