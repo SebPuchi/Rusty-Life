@@ -1,14 +1,14 @@
 //Grid Logic
 
 pub struct Grid {
-    width: usize,
-    height: usize,
+    pub width: usize,
+    pub height: usize,
     cells: Vec<bool>,
 }
 
 impl Grid {
     
-    pub fn new(width: usize, height: usize, cells: Vec<bool>) -> Self {
+    pub fn new(width: usize, height: usize) -> Self {
         Self { 
             width, 
             height,
@@ -17,11 +17,15 @@ impl Grid {
         }
     }
 
+}
+
 impl Default for Grid {
     fn default() -> Self {
+        let width = 100;
+        let height = 50;
         Self {
-            width: 100,
-            height: 50,
+            width,
+            height,
             //Randomization function
             cells: vec![false; width * height]
         }
