@@ -1,0 +1,5 @@
+# Ignore target directory
+rusty_life/target
+
+# Ignore Cargo.lock 
+rusty_life/Cargo.lock
