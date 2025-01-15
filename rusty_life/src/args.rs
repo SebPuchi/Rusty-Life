@@ -1,6 +1,9 @@
 use clap::Parser;
 
-pub struct Args {
+/// Simple program to greet a person
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
     /// Name of the person to greet
     #[arg(short, long)]
     name: String,
@@ -9,3 +12,4 @@ pub struct Args {
     #[arg(short, long, default_value_t = 1)]
     count: u8,
 }
+
