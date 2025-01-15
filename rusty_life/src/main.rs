@@ -1,12 +1,13 @@
-use grid::Grid;
+mod grid;
+
+use grid::LifeGrid;
 use clap::Parser;
 
-mod grid;
-mod display;
 
 fn main() {
-    let custom_grid = Grid::new(200, 100);
-    let default_grid: Grid = Grid::default();
-    println!("custom_grid: width = {}, height = {}", custom_grid.width, custom_grid.height);
-    println!("default_grid: width = {}, height = {}", default_grid.width, default_grid.height);
+    let grid1 = LifeGrid::new(100, 100);
+    let grid2 = LifeGrid::new(200, 200);
+    let grid3 = LifeGrid::default();
+    println!("custom_grid: width = {}, height = {}", grid1.width, grid1.height);
+    println!("default_grid: width = {}, height = {}", grid2.width, grid2.height);
 }
