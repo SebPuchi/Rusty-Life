@@ -12,7 +12,8 @@ impl Grid {
         Self { 
             width, 
             height,
-            cells 
+            //Add randomization fucntion
+            cells: vec![false; width * height]
         }
     }
 
@@ -21,7 +22,8 @@ impl Default for Grid {
         Self {
             width: 100,
             height: 50,
-            cells
+            //Randomization function
+            cells: vec![false; width * height]
         }
     }
 }
