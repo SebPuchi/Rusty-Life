@@ -1,10 +1,15 @@
-use clap::Parser;
+use clap::{command, Arg};
 
-/// Simple program to greet a person
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-pub struct Args {
-    #[arg(short, long, default_value_t = 200)]
-    pub grid_width: i16,
+
+pub fn parse_args() {
+    let matches = command!() // requires `cargo` feature
+        .arg(Arg::new("grid_width")
+            .short('w')
+            .long("gridwidth"))
+        .arg(Arg::new("grid_height")
+            .short('l')
+            .long("gridlength"))
+        .get_matches();
+
 }
 
