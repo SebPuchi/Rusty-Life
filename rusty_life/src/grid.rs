@@ -1,17 +1,17 @@
 //Grid Logic
 pub struct LifeGrid {
     pub width: usize,
-    pub height: usize,
+    pub length: usize,
     cells: Vec<bool>,
 }
 
 impl LifeGrid {
-    pub fn new(width: usize, height: usize) -> Self {
+    pub fn new(width: usize, length: usize) -> Self {
          Self { 
              width, 
-             height,
+             length,
              //Add randomization fucntion
-             cells: vec![false; width * height]
+             cells: vec![false; width * length]
          }
      }
 
@@ -20,12 +20,12 @@ impl LifeGrid {
 impl Default for LifeGrid {
     fn default() -> Self {
         let width = 100;
-        let height = 50;
+        let length = 50;
         Self {
             width,
-            height,
+            length,
             //Randomization function
-            cells: vec![false; width * height]
+            cells: vec![false; width * length]
         }
     }
 }
