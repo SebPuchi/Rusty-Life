@@ -5,11 +5,7 @@ use args::parse_args;
 use grid::LifeGrid;
 
 fn main() {
-    let grid1 = LifeGrid::new(100, 100);
-    let grid2 = LifeGrid::new(200, 200);
-    parse_args();
-    println!("grid1: width = {}, height = {}", grid1.width, grid1.length);
-    println!("grid2: width = {}, height = {}", grid2.width, grid2.length);
-    //println!("width arg = {}", args.grid_width);
-//    println!("height arg = {}", args.grid_height);
+    let user_matches = parse_args();
+    println!("width: {:?}", user_matches.get_one::<usize>("grid_width"));
+    println!("length: {:?}", user_matches.get_one::<usize>("grid_length"));
 }
