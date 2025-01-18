@@ -11,11 +11,13 @@ pub fn parse_args() -> ArgMatches {
                 .help("please specify the width of the grid. Must be a postive number")
                 .short('w')
                 .long("gridwidth")
+                .value_parser(clap::value_parser!(usize)) 
                 .default_value("100"),
             Arg::new("grid_length")
                 .help("please specify the length of the grid. Must be a postive number")
                 .short('l')
                 .long("gridlength")
+                .value_parser(clap::value_parser!(usize)) 
                 .default_value("200"),
         ])
     .get_matches();

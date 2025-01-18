@@ -6,6 +6,7 @@ use grid::LifeGrid;
 
 fn main() {
     let user_matches = parse_args();
-    println!("width: {:?}", user_matches.get_one::<usize>("grid_width"));
-    println!("length: {:?}", user_matches.get_one::<usize>("grid_length"));
+    // Safest - unwrap() is fine here since we have a default value
+    let n_grid = LifeGrid::new(*user_matches.get_one::<usize>("grid_width").unwrap(), *user_matches.get_one::<usize>("grid_width").unwrap());
 }
+
