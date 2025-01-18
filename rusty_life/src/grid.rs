@@ -20,7 +20,7 @@ impl LifeGrid {
 impl Default for LifeGrid {
     fn default() -> Self {
         let width = 100;
-        let length = 50;
+        let length = 200;
         Self {
             width,
             length,
