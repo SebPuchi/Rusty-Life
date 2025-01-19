@@ -6,8 +6,15 @@ use ratatui::{
     style::Stylize,
     symbols::border,
     text::{Line, Text},
-    widgets::{Block, Paragraph, Widget},
+    widgets::{
+        canvas::{Canvas, Map, MapResolution, Rectangle},
+        Block, 
+        Paragraph, 
+        Widget
+    },
     DefaultTerminal, Frame,
+    style::Color,
+
 };
 
 #[derive(Debug, Default)]
