@@ -35,7 +35,8 @@ impl App {
     }
 
     fn draw(&self, frame: &mut Frame) {
-        frame.render_widget(self, frame.area());
+        frame.render_widget(self.map_canvas(), frame.area());
+
     }
 
     fn handle_events(&mut self) -> io::Result<()> {
@@ -60,14 +61,18 @@ impl App {
         self.exit = true;
     }
 
-}
-impl Widget for &App {
-    fn render(self, area: Rect, buf: &mut Buffer) {
-        let block = Block::bordered()
-            .title(" Basic Block ".bold())
-            .border_set(border::THICK);
-
-        block.render(area, buf);
+    fn map_canvas(&self) -> impl Widget + '_ {
+        Canvas::default()
+            .block(Block::bordered().title(" World "))
+            .paint(|ctx| {
+                ctx.draw(&Map {
+                    color: Color::Green,
+                    resolution: MapResolution::High,
+                });
+                ctx.print(20.0, -40.0, "You are here".yellow());
+            })
+            .x_bounds([-180.0, 180.0])
+            .y_bounds([-90.0, 90.0])
     }
 }
 
