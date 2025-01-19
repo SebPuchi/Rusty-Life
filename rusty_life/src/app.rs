@@ -1,21 +1,23 @@
 use std::io;
 use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
 use ratatui::{
+    symbols,
     buffer::Buffer,
     layout::Rect,
     style::Stylize,
     symbols::border,
     text::{Line, Text},
     widgets::{
-        canvas::{Canvas, Map, MapResolution, Rectangle},
+        canvas::{Canvas, Map, MapResolution, Rectangle, Line as CanvasLine},
         Block, 
         Paragraph, 
         Widget
     },
     DefaultTerminal, Frame,
     style::Color,
-
 };
+
+
 
 #[derive(Debug, Default)]
 pub struct App {
@@ -57,22 +59,31 @@ impl App {
         }
     }
 
+
     fn exit(&mut self) {
         self.exit = true;
     }
-
-    fn map_canvas(&self) -> impl Widget + '_ {
+fn map_canvas(&self) -> impl Widget + '_ {
         Canvas::default()
-            .block(Block::bordered().title(" World "))
-            .paint(|ctx| {
-                ctx.draw(&Map {
-                    color: Color::Green,
-                    resolution: MapResolution::High,
-                });
-                ctx.print(20.0, -40.0, "You are here".yellow());
+            .marker(symbols::Marker::Block)
+            .block(Block::bordered().title(" rusty-life "))
+            .x_bounds([0.0, 10.0])
+            .y_bounds([0.0, 10.0])
+            .paint(|context| {
+                // Draw vertical grid lines
+                for x in -10..=10 {
+                    let x = x as f64;
+                    context.draw(&CanvasLine {
+                        x1: x,
+                        y1: 0.0,
+                        x2: x,
+                        y2: 10.0,
+                        color: Color::DarkGray,
+                    });
+                }
+
             })
-            .x_bounds([-180.0, 180.0])
-            .y_bounds([-90.0, 90.0])
     }
+    
 }
 
