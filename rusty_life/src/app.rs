@@ -1,20 +1,16 @@
 use std::io;
 use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
 use ratatui::{
-    symbols,
-    buffer::Buffer,
-    layout::Rect,
-    style::Stylize,
-    symbols::border,
-    text::{Line, Text},
+    style::{Color, Stylize}, 
+    symbols::{self, border::{self, THICK}}, 
+    text::{Line, Text}, 
     widgets::{
-        canvas::{Canvas, Map, MapResolution, Rectangle, Line as CanvasLine},
+        canvas::{Canvas, Line as CanvasLine, Rectangle},
         Block, 
         Paragraph, 
-        Widget
-    },
-    DefaultTerminal, Frame,
-    style::Color,
+        Widget,
+        BorderType,
+    }, DefaultTerminal, Frame
 };
 
 
@@ -66,11 +62,13 @@ impl App {
 fn map_canvas(&self) -> impl Widget + '_ {
         Canvas::default()
             .marker(symbols::Marker::Block)
-            .block(Block::bordered().title(" rusty-life "))
+            .block(Block::bordered()
+                .title(" rusty-life ")
+                //.border_type(BorderType::Thick)
+            )
             .x_bounds([0.0, 10.0])
             .y_bounds([0.0, 10.0])
             .paint(|context| {
-                // Draw vertical grid lines
                 for x in -10..=10 {
                     let x = x as f64;
                     context.draw(&CanvasLine {
