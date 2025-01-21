@@ -10,6 +10,7 @@ use ratatui::{
         Block, 
         Widget,
         BorderType,
+        Padding
     }, DefaultTerminal, Frame
 };
 
@@ -91,9 +92,11 @@ fn map_canvas(&self) -> impl Widget + '_ {
             .block(Block::bordered()
                 .title(" rusty-life ")
                 .border_type(BorderType::Thick)
+                .padding(Padding::proportional(2))
             )
             .x_bounds([0.0, self.grid.length as f64])
             .y_bounds([0.0, self.grid.width as f64])
+            .background_color(Color::White)
             .paint(|context| {
             })
     }
