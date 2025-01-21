@@ -92,12 +92,21 @@ fn map_canvas(&self) -> impl Widget + '_ {
             .block(Block::bordered()
                 .title(" rusty-life ")
                 .border_type(BorderType::Thick)
-                .padding(Padding::proportional(2))
+                .padding(Padding::proportional(1))
             )
-            .x_bounds([0.0, self.grid.length as f64])
-            .y_bounds([0.0, self.grid.width as f64])
+            .x_bounds([0.0, 100.0])
+            .y_bounds([0.0, 100.0])
+            //.x_bounds([0.0, self.grid.length as f64])
+            //.y_bounds([0.0, self.grid.width as f64])
             .background_color(Color::White)
             .paint(|context| {
+                context.draw(&Rectangle {
+                    x: 50.0,
+                    y: 50.0,
+                    width: 1.0,
+                    height: 1.0,
+                    color: Color::Blue,
+                    });
             })
     }
     
