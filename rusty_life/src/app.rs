@@ -95,29 +95,6 @@ fn map_canvas(&self) -> impl Widget + '_ {
             .x_bounds([0.0, self.grid.length as f64])
             .y_bounds([0.0, self.grid.width as f64])
             .paint(|context| {
-                // Draw vertical grid lines
-                for x in 0..=self.grid.length {
-                    let x = x as f64;
-                    context.draw(&CanvasLine {
-                        x1: x,
-                        y1: 0.0,
-                        x2: x,
-                        y2: self.grid.width as f64,
-                        color: Color::DarkGray,
-                    });
-                }
-                
-                // Draw horizontal grid lines
-                for y in 0..=self.grid.width {
-                    let y = y as f64;
-                    context.draw(&CanvasLine {
-                        x1: 0.0,
-                        y1: y,
-                        x2: self.grid.length as f64,
-                        y2: y,
-                        color: Color::DarkGray,
-                    });
-                }
             })
     }
     
