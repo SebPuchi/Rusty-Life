@@ -10,7 +10,7 @@ impl LifeGrid {
          Self { 
              width, 
              length,
-             //Add randomization fucntion
+             //Add randomization funcion
              cells: vec![false; width * length]
          }
      }
