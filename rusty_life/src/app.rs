@@ -1,19 +1,15 @@
 use std::io;
 use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
 use ratatui::{
-    layout::{Constraint, Direction, Layout, Rect},
-    style::{Color, Stylize}, 
-    symbols::{self, border::{self, THICK}}, 
-    text::{Line, Text}, 
+    style::{Color, Style},
     widgets::{
-        canvas::{Canvas, Line as CanvasLine, Rectangle},
+        canvas::{Canvas, Circle, Map, MapResolution, Points, Rectangle},
         Block, 
-        Widget,
-        BorderType,
-        Padding,
         Borders, 
-        Paragraph
+        BorderType
     }, 
+    layout::{Rect},
+    buffer::Buffer,
     DefaultTerminal, 
     Frame
 };
@@ -24,6 +20,7 @@ use crate::grid::LifeGrid;
 pub struct App {
     grid: LifeGrid,
     exit: bool,
+    cell_size: u16
 }
 
 //App behaviour
@@ -32,6 +29,7 @@ impl App {
         Self {
             exit: false,
             grid,
+            cell_size: 10,
         }
     }
 
@@ -53,7 +51,6 @@ impl App {
         Ok(())
     }
 
-    // ANCHOR: handle_key_event fn
     fn handle_key_event(&mut self, key_event: KeyEvent) {
         match key_event.code {
             KeyCode::Char('q') | KeyCode::Esc => self.exit(),
@@ -69,26 +66,20 @@ impl App {
 
 //App rendering
 impl App {
-    fn ui(&self, frame: &mut ratatui::Frame) {
-        // Define the layout: Two vertical sections (one for content, one for status)
-        let chunks = Layout::default()
-            .direction(Direction::Vertical)
-            .constraints([
-                Constraint::Percentage(80), // Main content (80% of terminal height)
-                Constraint::Percentage(20), // Footer/status (20%)
-            ])
-            .split(frame.area()); // Applies the layout to the frame area
-
-        // Render a block in the first section
-        let block = Block::default()
-            .title("Main Grid")
-            .borders(Borders::ALL);
-        frame.render_widget(block, chunks[0]);
-
-        // Render a status line in the second section
-        let status = Paragraph::new("Press 'Q' to exit")
-            .block(Block::default().borders(Borders::ALL));
-        frame.render_widget(status, chunks[1]);
+    fn ui(&self, frame: &mut Frame) {
+        let bounds = Rect::new(5, 5, 20, 10);
+        let map = Canvas::default()
+            .block(Block::bordered().title("World"))
+            .paint(|ctx| {
+                ctx.draw(&Map {
+                    color: Color::Green,
+                    resolution: MapResolution::High,
+                });
+                ctx.print(100.0, -100.0, "You are here");
+            })
+            .x_bounds([-180.0, 180.0])
+            .y_bounds([-90.0, 90.0]);
+            frame.render_widget(map, bounds);
     }
 }
 
