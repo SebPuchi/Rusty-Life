@@ -67,7 +67,11 @@ impl App {
 //App rendering
 impl App {
     fn ui(&self, frame: &mut Frame) {
-        let bounds = Rect::new(5, 5, 20, 10);
+        let size = frame.area(); // Get terminal size in character cells
+        let scaled_width = size.width / 2;
+
+        let bounds = Rect::new(0, 0, scaled_width, scaled_width / 2);
+
         let map = Canvas::default()
             .block(Block::bordered().title("World"))
             .paint(|ctx| {
