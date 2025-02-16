@@ -11,7 +11,9 @@ use ratatui::{
         Widget,
         BorderType,
         Padding
-    }, DefaultTerminal, Frame
+    }, 
+    DefaultTerminal, 
+    Frame
 };
 
 use crate::grid::LifeGrid;
