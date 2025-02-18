@@ -68,19 +68,28 @@ impl App {
 impl App {
     fn ui(&self, frame: &mut Frame) {
         let frame_area = frame.area();
+
         let map = Canvas::default()
             .block(Block::bordered()
                 .title_bottom(Line::from(" frame: 10 ").right_aligned())
+                .title_bottom(Line::from(
+                    format!(
+                        " frame_width: {} | frame_height: {} ", 
+                        frame_area.width, 
+                        frame_area.height
+                    )
+                ).left_aligned())
             )
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
-                 ctx.draw(&Rectangle {
+            /*     ctx.draw(&Rectangle {
                     x: 5.0,
                     y: 5.0,
                     width: 0.5,
                     height: 0.5,
                     color: Color::Red,
                 });
+            */
                  ctx.draw(&Points {
                     coords: &[(10.0, 10.0)],
                     color: Color::Red,
