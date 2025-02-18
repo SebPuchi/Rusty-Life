@@ -6,8 +6,10 @@ use ratatui::{
         canvas::{Canvas, Circle, Map, MapResolution, Points, Rectangle},
         Block, 
         Borders, 
-        BorderType
+        BorderType,
     }, 
+    text::Line,
+    symbols,
     layout::{Rect},
     buffer::Buffer,
     DefaultTerminal, 
@@ -67,23 +69,14 @@ impl App {
 //App rendering
 impl App {
     fn ui(&self, frame: &mut Frame) {
-        let size = frame.area(); // Get terminal size in character cells
-        let scaled_width = size.width / 2;
-
-        let bounds = Rect::new(0, 0, scaled_width, scaled_width / 2);
 
         let map = Canvas::default()
-            .block(Block::bordered().title("World"))
+            .block(Block::bordered()
+                .title_bottom(Line::from(" frame: 10 ").right_aligned()))
+            .marker(symbols::Marker::Block)
             .paint(|ctx| {
-                ctx.draw(&Map {
-                    color: Color::Green,
-                    resolution: MapResolution::High,
-                });
-                ctx.print(100.0, -100.0, "You are here");
-            })
-            .x_bounds([-180.0, 180.0])
-            .y_bounds([-90.0, 90.0]);
-            frame.render_widget(map, bounds);
+            });
+            frame.render_widget(map, frame.area());
     }
 }
 
