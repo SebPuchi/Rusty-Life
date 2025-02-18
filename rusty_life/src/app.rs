@@ -77,8 +77,12 @@ impl App {
                  ctx.draw(&Rectangle {
                     x: 5.0,
                     y: 5.0,
-                    width: 2.0,
-                    height: 1.0,
+                    width: 0.5,
+                    height: 0.5,
+                    color: Color::Red,
+                });
+                 ctx.draw(&Points {
+                    coords: &[(10.0, 10.0)],
                     color: Color::Red,
                 });
             }).x_bounds([0.0, frame_area.width as f64])  
