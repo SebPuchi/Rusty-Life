@@ -10,8 +10,6 @@ use ratatui::{
     }, 
     text::Line,
     symbols,
-    layout::{Rect},
-    buffer::Buffer,
     DefaultTerminal, 
     Frame
 };
@@ -69,14 +67,23 @@ impl App {
 //App rendering
 impl App {
     fn ui(&self, frame: &mut Frame) {
-
+        let frame_area = frame.area();
         let map = Canvas::default()
             .block(Block::bordered()
-                .title_bottom(Line::from(" frame: 10 ").right_aligned()))
-            .marker(symbols::Marker::Block)
+                .title_bottom(Line::from(" frame: 10 ").right_aligned())
+            )
+            .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
-            });
-            frame.render_widget(map, frame.area());
+                 ctx.draw(&Rectangle {
+                    x: 5.0,
+                    y: 5.0,
+                    width: 2.0,
+                    height: 1.0,
+                    color: Color::Red,
+                });
+            }).x_bounds([0.0, frame_area.width as f64])  
+            .y_bounds([0.0, frame_area.height as f64]);
+            frame.render_widget(map, frame_area);
     }
 }
 
