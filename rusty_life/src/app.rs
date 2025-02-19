@@ -3,12 +3,12 @@ use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
 use ratatui::{
     style::{Color, Style},
     widgets::{
-        canvas::{Canvas, Circle, Map, MapResolution, Points, Rectangle},
+        canvas::{Canvas, Line as CanvasLine, Circle, Map, MapResolution, Points, Rectangle},
         Block, 
         Borders, 
         BorderType,
     }, 
-    text::Line,
+    text::Line as TextLine,
     symbols,
     DefaultTerminal, 
     Frame
@@ -71,8 +71,8 @@ impl App {
 
         let map = Canvas::default()
             .block(Block::bordered()
-                .title_bottom(Line::from(" frame: 10 ").right_aligned())
-                .title_bottom(Line::from(
+                .title_bottom(TextLine::from(" frame: 10 ").right_aligned())
+                .title_bottom(TextLine::from(
                     format!(
                         " frame_width: {} | frame_height: {} ", 
                         frame_area.width, 
@@ -80,7 +80,7 @@ impl App {
                     )
                 ).left_aligned())
             )
-            .marker(symbols::Marker::HalfBlock)
+            .marker(symbols::Marker::Braille)
             .paint(|ctx| {
             /*     ctx.draw(&Rectangle {
                     x: 5.0,
@@ -91,11 +91,18 @@ impl App {
                 });
             */
                  ctx.draw(&Points {
-                    coords: &[(10.0, 10.0), (15.0,10.0)],
+                    coords: &[(10.0, 10.0), (11.0,10.0)],
                     color: Color::Red,
                 });
-            }).x_bounds([0.0, frame_area.width as f64])  
-            .y_bounds([0.0, frame_area.height as f64]);
+                 ctx.draw(&CanvasLine::new(
+                     15.0,
+                     10.0,
+                     20.0,
+                     10.0,
+                     Color::Red,
+                ));
+            }).x_bounds([0.0, (frame_area.width as f64)])  
+            .y_bounds([0.0, (frame_area.height as f64)]);
             frame.render_widget(map, frame_area);
     }
 }
