@@ -91,7 +91,7 @@ impl App {
                 });
             */
                  ctx.draw(&Points {
-                    coords: &[(10.0, 10.0)],
+                    coords: &[(10.0, 10.0), (15.0,10.0)],
                     color: Color::Red,
                 });
             }).x_bounds([0.0, frame_area.width as f64])  
