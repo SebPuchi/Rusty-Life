@@ -82,25 +82,10 @@ impl App {
             )
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
-            /*     ctx.draw(&Rectangle {
-                    x: 5.0,
-                    y: 5.0,
-                    width: 0.5,
-                    height: 0.5,
-                    color: Color::Red,
-                });
-            */
                  ctx.draw(&Points {
                     coords: &[(10.0, 11.0),(10.0, 10.5), (10.0, 10.0)],
                     color: Color::Red,
                 });
-                 /*ctx.draw(&CanvasLine::new(
-                     15.0,
-                     10.0,
-                     20.0,
-                     10.0,
-                     Color::Red,
-                ));*/
             }).x_bounds([0.0, (frame_area.width as f64)])  
             .y_bounds([0.0, (frame_area.height as f64)]);
             frame.render_widget(map, frame_area);
