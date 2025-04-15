@@ -35,6 +35,7 @@ impl App {
 
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
         while !self.exit {
+            // fetch and draw next generation 
             terminal.draw(|frame| self.ui(frame))?;
             self.handle_events()?;
         }
@@ -71,7 +72,7 @@ impl App {
 
         let map = Canvas::default()
             .block(Block::bordered()
-                .title_bottom(TextLine::from(" frame: 10 ").right_aligned())
+                .title_bottom(TextLine::from(" generation: 10 ").right_aligned())
                 .title_bottom(TextLine::from(
                     format!(
                         " frame_width: {} | frame_height: {} ", 
