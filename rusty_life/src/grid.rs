@@ -4,12 +4,12 @@ use array2d::{Array2D, Error};
 pub struct LifeGrid {
     pub height: u16,
     pub width: u16,
-    cells: Array2D,
+    cells: Array2D<bool>,
 }
 
 impl LifeGrid {
     pub fn new(height: u16, width: u16) -> Self {
-        let array = Array2D::filled_with(false, height, width);
+        let array = Array2D::filled_with(false, height.into(), width.into());
          Self { 
              height, 
              width,
