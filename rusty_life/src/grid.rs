@@ -20,9 +20,15 @@ impl LifeGrid {
      }
 
     pub fn build_coords(&self) -> Vec<(f64, f64)> {
-            
+        let mut live_cells = Vec::new();        
 
-    
+        for i in 0..self.generation {
+
+            live_cells.push((i.into(), 0.0));
+            live_cells.push((0.0, i.into()));
+        }
+
+        live_cells 
     }
 }
 
