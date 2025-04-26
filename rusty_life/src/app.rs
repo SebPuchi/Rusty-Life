@@ -22,7 +22,7 @@ pub struct App {
     frame_area: Rect,
     grid: LifeGrid,
     exit: bool,
-    status: Result<String, String>
+    pub status: io::Result<()>
 }
 
 //App behaviour
@@ -35,7 +35,7 @@ impl App {
             frame_area: current_frame_area,
             exit: false,
             grid: LifeGrid::new(current_frame_area.height, current_frame_area.width),
-            status: Ok(String::from("init success")),
+            status: Ok(()),
         }
     }
 
