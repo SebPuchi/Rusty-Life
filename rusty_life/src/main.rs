@@ -14,6 +14,7 @@ fn main() -> io::Result<()> {
     let app_result = App::new(&mut terminal);
     app_result.run(&mut terminal);
     ratatui::restore();
-    return app_result
+
+    app_result.status
 }
 
