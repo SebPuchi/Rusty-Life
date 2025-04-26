@@ -27,15 +27,11 @@ impl LifeGrid {
         let mut live_cells = Vec::new();
 
         for i in 0..self.generation {
-                if i < self.width {
                 live_cells.push((i as f64, 0.0));          
-            }
-            }
-
-
-        for i in 1..self.generation {
                 live_cells.push((0.0, i as f64));   
             }
+
+
         live_cells
     }
 }

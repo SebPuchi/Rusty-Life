@@ -106,8 +106,8 @@ impl App {
                     color: Color::Red,
                 });
             })
-            .x_bounds([0.0, inner_area.width  as f64 - 1.0])
-            .y_bounds([0.0, inner_area.height as f64 * 2.0]);
+            .x_bounds([0.0, (inner_area.width  as f64) - 1.0])
+            .y_bounds([0.0, (inner_area.height as f64 * 2.0) - 1.0]);
 
         frame.render_widget(inner_block, inner_area);
     }
