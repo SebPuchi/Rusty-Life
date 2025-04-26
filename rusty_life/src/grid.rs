@@ -10,7 +10,7 @@ pub struct LifeGrid {
 
 impl LifeGrid {
     pub fn new(height: u16, width: u16) -> Self {
-        let array = Array2D::filled_with(false, height.into(), width.into());
+        let array = Array2D::filled_with(false, (height * 2).into(), width.into());
          Self { 
             height, 
             width,
@@ -24,8 +24,8 @@ impl LifeGrid {
 
         for i in 0..self.generation {
 
-            live_cells.push((i.into(), 0.0));
-            live_cells.push((0.0, i.into()));
+            live_cells.push((i as f64, 0.0));
+            live_cells.push((0.0, i as f64 / 2.0 ));
         }
 
         live_cells 
