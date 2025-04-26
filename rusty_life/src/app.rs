@@ -81,23 +81,24 @@ impl App {
 impl App {
     fn ui(&self, frame: &mut Frame, alive_coords: &Vec<(f64,f64)>) {
 
-        let map = Canvas::default()
-            .block(Block::bordered()
-                .title_bottom(TextLine::from(
-                    format!(
-                        " generation: {} ", 
-                        self.grid.generation
-                    )
-                ).right_aligned())
-                .title_bottom(TextLine::from(
-                    format!(
-                        " frame_width: {} | frame_height: {} ", 
-                        self.grid.width,
-                        self.grid.height
-                        
-                    )
-                ).left_aligned())
+        let outer_block = Block::default()
+            .borders(Borders::ALL)
+            .title_bottom(
+                TextLine::from(format!(" generation: {} ", self.grid.generation))
+                    .right_aligned(),
             )
+            .title_bottom(
+                TextLine::from(format!(
+                    " frame_width: {} | frame_height: {} ",
+                    self.grid.width, self.grid.height
+                ))
+                .left_aligned(),
+            );
+        
+        frame.render_widget(&outer_block, self.frame_area);
+        
+        let inner_area = outer_block.inner(self.frame_area);
+        let inner_block = Canvas::default()
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
                  ctx.draw(&Points {
@@ -105,10 +106,10 @@ impl App {
                     color: Color::Red,
                 });
             })
-            .x_bounds([0.0, (self.frame_area.width - 3) as f64])
-            .y_bounds([0.0, ((self.frame_area.height - 2) * 2) as f64]);
+            .x_bounds([0.0, inner_area.width  as f64 - 1.0])
+            .y_bounds([0.0, inner_area.height as f64 * 2.0]);
 
-            frame.render_widget(map, self.frame_area);
+        frame.render_widget(inner_block, inner_area);
     }
 }
 
