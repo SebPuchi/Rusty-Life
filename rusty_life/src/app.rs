@@ -34,7 +34,11 @@ impl App {
         Self {
             frame_area: current_frame_area,
             exit: false,
-            grid: LifeGrid::new(current_frame_area.height, current_frame_area.width),
+            grid: LifeGrid::new(
+                current_frame_area.x, 
+                current_frame_area.y, 
+                current_frame_area.height - 2, 
+                current_frame_area.width - 2),
             status: Ok(()),
         }
     }
@@ -100,8 +104,10 @@ impl App {
                     coords: alive_coords,
                     color: Color::Red,
                 });
-            }).x_bounds([0.0, (self.grid.width as f64)])  
-            .y_bounds([0.0, (self.grid.height as f64)]);
+            })
+            .x_bounds([0.0, (self.frame_area.width - 3) as f64])
+            .y_bounds([0.0, ((self.frame_area.height - 2) * 2) as f64]);
+
             frame.render_widget(map, self.frame_area);
     }
 }
