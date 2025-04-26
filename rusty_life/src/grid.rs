@@ -2,19 +2,19 @@ use array2d::{Array2D, Error};
 
 //Grid Logic
 pub struct LifeGrid {
-    pub width: usize,
-    pub height: usize,
-    cells: Vec<bool>,
+    pub height: u16,
+    pub width: u16,
+    cells: Array2D,
 }
 
 impl LifeGrid {
-    pub fn new(width: usize, length: usize) -> Self {
+    pub fn new(height: u16, width: u16) -> Self {
+        let array = Array2D::filled_with(false, height, width);
          Self { 
-             width, 
-             height,
-             cells: vec![false; width * length]
+             height, 
+             width,
+             cells: array 
          }
      }
-
 }
 
