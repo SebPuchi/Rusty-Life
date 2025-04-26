@@ -77,7 +77,12 @@ impl App {
 
         let map = Canvas::default()
             .block(Block::bordered()
-                .title_bottom(TextLine::from(" generation: 10 ").right_aligned())
+                .title_bottom(TextLine::from(
+                    format!(
+                        " generation: {} ", 
+                        self.grid.generation
+                    )
+                ).right_aligned())
                 .title_bottom(TextLine::from(
                     format!(
                         " frame_width: {} | frame_height: {} ", 

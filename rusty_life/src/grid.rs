@@ -4,6 +4,7 @@ use array2d::{Array2D, Error};
 pub struct LifeGrid {
     pub height: u16,
     pub width: u16,
+    pub generation: u16,
     cells: Array2D<bool>,
 }
 
@@ -13,7 +14,8 @@ impl LifeGrid {
          Self { 
              height, 
              width,
-             cells: array 
+             cells: array, 
+            generation: 0
          }
      }
 }
