@@ -42,7 +42,8 @@ impl App {
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
         while !self.exit {
             // fetch and draw next generation 
-            terminal.draw(|frame| self.ui(frame))?;
+            let live_coords = self.grid.build_coords();
+            terminal.draw(|frame| self.ui(frame, &live_coords))?;
             self.grid.generation+=1;
             self.handle_events()?;
         }
@@ -74,7 +75,7 @@ impl App {
 
 //App rendering
 impl App {
-    fn ui(&self, frame: &mut Frame) {
+    fn ui(&self, frame: &mut Frame, alive_coords: &Vec<(f64,f64)>) {
 
         let map = Canvas::default()
             .block(Block::bordered()
@@ -96,7 +97,7 @@ impl App {
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
                  ctx.draw(&Points {
-                    coords: &[(0.0, 0.0),(self.grid.width.into(), 0.0), (0.0, self.grid.height.into()), (self.grid.width.into(), self.grid.height.into())],
+                    coords: alive_coords,
                     color: Color::Red,
                 });
             }).x_bounds([0.0, (self.grid.width as f64)])  

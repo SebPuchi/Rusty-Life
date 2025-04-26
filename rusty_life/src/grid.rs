@@ -18,5 +18,11 @@ impl LifeGrid {
             generation: 0
          }
      }
+
+    pub fn build_coords(&self) -> Vec<(f64, f64)> {
+            
+
+    
+    }
 }
 
