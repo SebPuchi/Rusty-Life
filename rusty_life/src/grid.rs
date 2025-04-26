@@ -12,9 +12,9 @@ impl LifeGrid {
     pub fn new(height: u16, width: u16) -> Self {
         let array = Array2D::filled_with(false, height.into(), width.into());
          Self { 
-             height, 
-             width,
-             cells: array, 
+            height, 
+            width,
+            cells: array, 
             generation: 0
          }
      }

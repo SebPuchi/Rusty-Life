@@ -43,6 +43,7 @@ impl App {
         while !self.exit {
             // fetch and draw next generation 
             terminal.draw(|frame| self.ui(frame))?;
+            self.grid.generation+=1;
             self.handle_events()?;
         }
         Ok(())
@@ -95,7 +96,7 @@ impl App {
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
                  ctx.draw(&Points {
-                    coords: &[(10.0, 11.0),(10.0, 10.5), (10.0, 10.0)],
+                    coords: &[(0.0, 0.0),(self.grid.width.into(), 0.0), (0.0, self.grid.height.into()), (self.grid.width.into(), self.grid.height.into())],
                     color: Color::Red,
                 });
             }).x_bounds([0.0, (self.grid.width as f64)])  
