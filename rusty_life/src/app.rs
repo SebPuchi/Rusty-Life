@@ -20,16 +20,16 @@ use crate::grid::LifeGrid;
 pub struct App {
     grid: LifeGrid,
     exit: bool,
-    cell_size: u16
 }
 
 //App behaviour
 impl App {
-    pub fn new(grid: LifeGrid) -> Self {
+    pub fn new() -> Self {
+        let frame_area = frame.area();
+        let grid = LifeGrid::new();
         Self {
             exit: false,
             grid,
-            cell_size: 10,
         }
     }
 
@@ -67,8 +67,7 @@ impl App {
 
 //App rendering
 impl App {
-    fn ui(&self, frame: &mut Frame) {
-        let frame_area = frame.area();
+    fn ui(&self, frame: &mut Frame, coords) {
 
         let map = Canvas::default()
             .block(Block::bordered()

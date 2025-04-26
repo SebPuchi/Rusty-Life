@@ -17,15 +17,3 @@ impl LifeGrid {
 
 }
 
-impl Default for LifeGrid {
-    fn default() -> Self {
-        let width = 100;
-        let length = 200;
-        Self {
-            width,
-            length,
-            //Randomization function
-            cells: vec![false; width * length]
-        }
-    }
-}

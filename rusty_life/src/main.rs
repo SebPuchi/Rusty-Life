@@ -9,9 +9,10 @@ use app::App;
 
 fn main() -> io::Result<()> {
     let user_matches = parse_args();
-    let f_grid = LifeGrid::new(*user_matches.get_one::<usize>("grid_width").unwrap(), *user_matches.get_one::<usize>("grid_length").unwrap());
+    //let f_grid = LifeGrid::new(*user_matches.get_one::<usize>("grid_width").unwrap(), *user_matches.get_one::<usize>("grid_length").unwrap());
     let mut terminal = ratatui::init();
-    let app_result = App::new(f_grid).run(&mut terminal);
+    let app_result = App::new();
+    app_result.run(&mut terminal);
     ratatui::restore();
     return app_result
 }
