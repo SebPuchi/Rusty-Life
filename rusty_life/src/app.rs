@@ -26,7 +26,7 @@ pub struct App {
 impl App {
     pub fn new() -> Self {
         let frame_area = frame.area();
-        let grid = LifeGrid::new();
+        let grid = LifeGrid::new(frame_area.width, frame_area.height);
         Self {
             exit: false,
             grid,
