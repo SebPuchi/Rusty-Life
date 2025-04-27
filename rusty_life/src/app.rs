@@ -20,6 +20,7 @@ use crate::grid::LifeGrid;
 
 pub struct App {
     frame_area: Rect,
+    inner_area: Rect,
     grid: LifeGrid,
     exit: bool,
     pub status: io::Result<()>
@@ -31,14 +32,19 @@ impl App {
         let current_frame_area = terminal
             .get_frame()
             .area();
+
+        let outer_block = Block::default()
+            .borders(Borders::ALL)
+            .title_bottom(TextLine::from(""))
+            .title_bottom(TextLine::from(""));
+
+        let current_inner_area = outer_block.inner(current_frame_area);
+
         Self {
             frame_area: current_frame_area,
+            inner_area: current_inner_area,
             exit: false,
-            grid: LifeGrid::new(
-                current_frame_area.x, 
-                current_frame_area.y, 
-                current_frame_area.height - 2, 
-                current_frame_area.width - 2),
+            grid: LifeGrid::new(current_inner_area.height, current_inner_area.width),
             status: Ok(()),
         }
     }
@@ -97,7 +103,6 @@ impl App {
         
         frame.render_widget(&outer_block, self.frame_area);
         
-        let inner_area = outer_block.inner(self.frame_area);
         let inner_block = Canvas::default()
             .marker(symbols::Marker::HalfBlock)
             .paint(|ctx| {
@@ -106,10 +111,10 @@ impl App {
                     color: Color::Red,
                 });
             })
-            .x_bounds([0.0, (inner_area.width  as f64) - 1.0])
-            .y_bounds([0.0, (inner_area.height as f64 * 2.0) - 1.0]);
+            .x_bounds([0.0, (self.inner_area.width  as f64) - 1.0])
+            .y_bounds([0.0, (self.inner_area.height as f64 * 2.0) - 1.0]);
 
-        frame.render_widget(inner_block, inner_area);
+        frame.render_widget(inner_block, self.inner_area);
     }
 }
 
