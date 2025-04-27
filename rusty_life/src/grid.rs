@@ -11,12 +11,11 @@ pub struct LifeGrid {
 
 impl LifeGrid {
     pub fn new(height: u16, width: u16) -> Self {
-        let mut current = Array2D::filled_with(false, (height * 2).into(), width.into());
+        let current = Array2D::filled_with(false, (height * 2).into(), width.into());
         let next = Array2D::filled_with(false, (height * 2).into(), width.into());
         let adjusted_height = (height *2);
         let adjusted_width = (width);
 
-        spawn_glider_center(&mut current, adjusted_height, adjusted_width);
          Self { 
             height: adjusted_height, 
             width: adjusted_width,
@@ -82,25 +81,24 @@ impl LifeGrid {
         live_cells
     }
 
+    pub fn spawn_glider_center(&mut self) {
+        let center_row = self.height as usize / 2;
+        let center_col = self.width as usize / 2;
 
-}
+        let glider_coords = [
+            (center_row, center_col + 1),
+            (center_row + 1, center_col + 2),
+            (center_row + 2, center_col),
+            (center_row + 2, center_col + 1),
+            (center_row + 2, center_col + 2),
+        ];
 
-fn spawn_glider_center(grid: &mut Array2D<bool>, height: u16, width: u16) {
-    let center_row = height as usize / 2;
-    let center_col = width as usize / 2;
-
-    // Glider pattern relative to center
-    let glider_coords = [
-        (center_row, center_col + 1),
-        (center_row + 1, center_col + 2),
-        (center_row + 2, center_col),
-        (center_row + 2, center_col + 1),
-        (center_row + 2, center_col + 2),
-    ];
-
-    for (row, col) in glider_coords.iter() {
-        if let Some(cell) = grid.get_mut(*row, *col) {
-            *cell = true;
+        for (row, col) in glider_coords.iter() {
+            if let Some(cell) = self.current_cells.get_mut(*row, *col) {
+                *cell = true;
+            }
         }
     }
+
 }
+
