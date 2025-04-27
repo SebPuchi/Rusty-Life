@@ -52,9 +52,9 @@ impl App {
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
         while !self.exit {
             // fetch and draw next generation 
+            self.grid.evolve_next();
             let live_coords = self.grid.build_coords();
             terminal.draw(|frame| self.ui(frame, &live_coords))?;
-            self.grid.generation+=1;
             self.handle_events()?;
         }
         Ok(())
