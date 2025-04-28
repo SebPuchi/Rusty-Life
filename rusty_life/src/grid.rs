@@ -198,6 +198,199 @@ impl LifeGrid {
             ((center_row+18), (center_col-50)),
             ((center_row+19), (center_col-50)),
             ((center_row+21), (center_col-50)),
+
+
+            ((center_row+17), (center_col-40)),
+            ((center_row+17), (center_col-39)),
+            ((center_row+17), (center_col-36)),
+            ((center_row+17), (center_col-35)),
+
+
+            ((center_row+17), (center_col-32)),
+            ((center_row+17), (center_col-31)),
+            ((center_row+17), (center_col-30)),
+            ((center_row+17), (center_col-29)),
+
+            ((center_row+17), (center_col-26)),
+            ((center_row+17), (center_col-25)),
+            ((center_row+17), (center_col-24)),
+
+            ((center_row+17), (center_col-21)),
+            ((center_row+17), (center_col-20)),
+
+            ((center_row+17), (center_col-17)),
+            ((center_row+17), (center_col-16)),
+
+            ((center_row+17), (center_col-12)),
+            ((center_row+17), (center_col-11)),
+            ((center_row+17), (center_col-9)),
+            ((center_row+17), (center_col-8)),
+
+
+            ((center_row+16), (center_col-40)),
+            ((center_row+16), (center_col-39)),
+            ((center_row+16), (center_col-36)),
+            ((center_row+16), (center_col-35)),
+            ((center_row+16), (center_col-34)),
+
+            ((center_row+16), (center_col-32)),
+            ((center_row+16), (center_col-31)),
+            ((center_row+16), (center_col-29)),
+            ((center_row+16), (center_col-28)),
+
+            ((center_row+16), (center_col-26)),
+            ((center_row+16), (center_col-25)),
+
+            ((center_row+16), (center_col-21)),
+            ((center_row+16), (center_col-20)),
+
+            ((center_row+16), (center_col-17)),
+            ((center_row+16), (center_col-16)),
+            ((center_row+16), (center_col-15)),
+
+            ((center_row+16), (center_col-13)),
+            ((center_row+16), (center_col-12)),
+            ((center_row+16), (center_col-11)),
+            ((center_row+16), (center_col-10)),
+
+            ((center_row+16), (center_col-8)),
+            ((center_row+16), (center_col-7)),
+            ((center_row+16), (center_col-6)),
+
+
+            ((center_row+15), (center_col-40)),
+            ((center_row+15), (center_col-39)),
+            ((center_row+15), (center_col-36)),
+            ((center_row+15), (center_col-35)),
+
+
+            ((center_row+15), (center_col-32)),
+            ((center_row+15), (center_col-31)),
+
+            ((center_row+15), (center_col-26)),
+            ((center_row+15), (center_col-25)),
+ 
+            ((center_row+15), (center_col-21)),
+            ((center_row+15), (center_col-20)),
+
+            ((center_row+15), (center_col-17)),
+            ((center_row+15), (center_col-16)),
+
+            ((center_row+15), (center_col-12)),
+            ((center_row+15), (center_col-11)),
+            ((center_row+15), (center_col-8)),
+            ((center_row+15), (center_col-7)),
+
+            ((center_row+14), (center_col-41)),
+            ((center_row+14), (center_col-40)),
+            ((center_row+14), (center_col-39)),
+            ((center_row+14), (center_col-36)),
+            ((center_row+14), (center_col-35)),
+
+            ((center_row+14), (center_col-32)),
+            ((center_row+14), (center_col-31)),
+            ((center_row+14), (center_col-30)),
+            ((center_row+14), (center_col-29)),
+            ((center_row+14), (center_col-28)),
+
+            ((center_row+14), (center_col-26)),
+            ((center_row+14), (center_col-25)),
+
+            ((center_row+14), (center_col-22)),
+            ((center_row+14), (center_col-21)),
+            ((center_row+14), (center_col-20)),
+            ((center_row+14), (center_col-17)),
+            ((center_row+14), (center_col-16)),
+
+            ((center_row+14), (center_col-12)),
+            ((center_row+14), (center_col-11)),
+            ((center_row+14), (center_col-8)),
+            ((center_row+14), (center_col-7)),
+
+
+            ((center_row+13), (center_col-40)),
+            ((center_row+13), (center_col-39)),
+            ((center_row+13), (center_col-36)),
+            ((center_row+13), (center_col-35)),
+
+            ((center_row+13), (center_col-29)),
+            ((center_row+13), (center_col-28)),
+
+            ((center_row+13), (center_col-26)),
+            ((center_row+13), (center_col-25)),
+
+            ((center_row+13), (center_col-21)),
+            ((center_row+13), (center_col-20)),
+            ((center_row+13), (center_col-17)),
+            ((center_row+13), (center_col-16)),
+
+            ((center_row+13), (center_col-12)),
+            ((center_row+13), (center_col-11)),
+            ((center_row+13), (center_col-8)),
+            ((center_row+13), (center_col-7)),
+
+            ((center_row+12), (center_col-39)),
+            ((center_row+12), (center_col-36)),
+            ((center_row+12), (center_col-35)),
+
+            ((center_row+12), (center_col-32)),
+            ((center_row+12), (center_col-29)),
+            ((center_row+12), (center_col-28)),
+
+            ((center_row+12), (center_col-26)),
+            ((center_row+12), (center_col-25)),
+            ((center_row+12), (center_col-23)),
+
+            ((center_row+12), (center_col-20)),
+            ((center_row+12), (center_col-17)),
+            ((center_row+12), (center_col-16)),
+
+            ((center_row+12), (center_col-12)),
+            ((center_row+12), (center_col-11)),
+            ((center_row+12), (center_col-10)),
+            ((center_row+12), (center_col-8)),
+            ((center_row+12), (center_col-7)),
+            ((center_row+12), (center_col-6)),
+
+
+            ((center_row+11), (center_col-38)),
+            ((center_row+11), (center_col-37)),
+
+            ((center_row+11), (center_col-33)),
+            ((center_row+11), (center_col-31)),
+            ((center_row+11), (center_col-29)),
+            ((center_row+11), (center_col-28)),
+
+            ((center_row+11), (center_col-26)),
+            ((center_row+11), (center_col-25)),
+            ((center_row+11), (center_col-24)),
+
+            ((center_row+11), (center_col-19)),
+            ((center_row+11), (center_col-18)),
+
+            ((center_row+11), (center_col-12)),
+            ((center_row+11), (center_col-11)),
+            ((center_row+11), (center_col-8)),
+            ((center_row+11), (center_col-7)),
+
+
+            ((center_row+10), (center_col-33)),
+            ((center_row+10), (center_col-30)),
+            ((center_row+10), (center_col-29)),
+            ((center_row+10), (center_col-28)),
+
+            ((center_row+10), (center_col-26)),
+
+
+            ((center_row+18), (center_col-38)),
+            ((center_row+18), (center_col-37)),
+
+            ((center_row+18), (center_col-26)),
+            ((center_row+18), (center_col-25)),
+            ((center_row+19), (center_col-25)),
+
+            ((center_row+18), (center_col-19)),
+            ((center_row+18), (center_col-18)),
         ];
 
         for (row, col) in r_coords.iter() {
