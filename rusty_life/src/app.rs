@@ -25,6 +25,7 @@ pub struct App {
     frame_area: Rect,
     inner_area: Rect,
     grid: LifeGrid,
+    paused: bool,
     exit: bool,
     pub status: io::Result<()>
 }
@@ -46,6 +47,7 @@ impl App {
         Self {
             frame_area: current_frame_area,
             inner_area: current_inner_area,
+            paused: true,
             exit: false,
             grid: LifeGrid::new(current_inner_area.height, current_inner_area.width),
             status: Ok(()),
@@ -53,11 +55,16 @@ impl App {
     }
 
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
-        self.grid.spawn_r_center();
+        //self.grid.spawn_r_center();
+        //self.grid.spawn_glider_center();
+        self.grid.spawn_bc_center();
 
         while !self.exit {
             // fetch and draw next generation 
-            self.grid.evolve_next();
+            if !self.paused {
+                self.grid.evolve_next();
+            }
+
             let live_coords = self.grid.build_coords();
             terminal.draw(|frame| self.ui(frame, &live_coords))?;
             self.handle_events()?;
@@ -80,9 +87,14 @@ impl App {
 
     fn handle_key_event(&mut self, key_event: KeyEvent) {
         match key_event.code {
+            KeyCode::Char(' ') => self.toggle_pause(),
             KeyCode::Char('q') | KeyCode::Esc => self.exit(),
             _ => {}
         }
+    }
+
+    fn toggle_pause(&mut self){
+        self.paused = !self.paused;
     }
 
     fn exit(&mut self) {

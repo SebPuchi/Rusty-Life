@@ -72,7 +72,7 @@ impl LifeGrid {
             for col in 0..self.width {
                 if *self.current_cells.get(row as usize, col as usize).unwrap_or(&false) {
                     let x = col as f64;
-                    let y = (self.height - 1 - row) as f64; // flip y-axis
+                    let y =  row as f64; 
                     live_cells.push((x, y));
                 }
             }
@@ -106,10 +106,10 @@ impl LifeGrid {
 
         let r_coords = [
             (center_row, center_col),
-            (center_row, center_col + 1),
-            (center_row, center_col - 1),
-            (center_row -1, center_col),
-            (center_row +1, center_col + 1),
+            (center_row +1, center_col +1),
+            (center_row, center_col-1),
+            (center_row+ 1, center_col),
+            (center_row - 1, center_col),
         ];
 
         for (row, col) in r_coords.iter() {
@@ -118,6 +118,95 @@ impl LifeGrid {
             }
         }
     }
+
+    pub fn spawn_bc_center(&mut self) {
+        let center_row = self.height as usize / 2;
+        let center_col = self.width as usize / 2;
+
+        let r_coords = [
+            ((center_row+10), (center_col-50)),
+            ((center_row+11), (center_col-50)),
+            ((center_row+11), (center_col-49)),
+            ((center_row+11), (center_col-47)),
+            ((center_row+11), (center_col-46)),
+            ((center_row+10), (center_col-45)),
+            ((center_row+11), (center_col-44)),
+            ((center_row+11), (center_col-43)),
+            ((center_row+11), (center_col-42)),
+
+
+            ((center_row+12), (center_col-42)),
+            ((center_row+13), (center_col-42)),
+            ((center_row+14), (center_col-42)),
+            ((center_row+15), (center_col-42)),
+            ((center_row+12), (center_col-43)),
+            ((center_row+13), (center_col-43)),
+            ((center_row+14), (center_col-43)),
+            ((center_row+15), (center_col-43)),
+
+            ((center_row+15), (center_col-49)),
+            ((center_row+16), (center_col-49)),
+            ((center_row+16), (center_col-51)),
+
+
+            ((center_row+15), (center_col-48)),
+            ((center_row+16), (center_col-48)),
+            ((center_row+17), (center_col-48)),
+            ((center_row+18), (center_col-48)),
+            ((center_row+19), (center_col-48)),
+            ((center_row+20), (center_col-48)),
+            ((center_row+20), (center_col-49)),
+            ((center_row+20), (center_col-51)),
+            ((center_row+20), (center_col-52)),
+
+            ((center_row+20), (center_col-47)),
+            ((center_row+19), (center_col-47)),
+            ((center_row+18), (center_col-47)),
+            ((center_row+17), (center_col-47)),
+            ((center_row+16), (center_col-47)),
+            ((center_row+15), (center_col-47)),
+            ((center_row+14), (center_col-47)),
+            ((center_row+13), (center_col-47)),
+            ((center_row+12), (center_col-47)),
+
+            ((center_row+14), (center_col-48)),
+            ((center_row+13), (center_col-48)),
+            ((center_row+12), (center_col-48)),
+
+
+            ((center_row+21), (center_col-47)),
+            ((center_row+21), (center_col-46)),
+            ((center_row+21), (center_col-45)),
+            ((center_row+21), (center_col-44)),
+
+            ((center_row+20), (center_col-44)),
+            ((center_row+19), (center_col-44)),
+            ((center_row+18), (center_col-44)),
+            ((center_row+20), (center_col-43)),
+            ((center_row+19), (center_col-43)),
+            ((center_row+18), (center_col-43)),
+            ((center_row+17), (center_col-45)),
+            ((center_row+16), (center_col-43)),
+            ((center_row+16), (center_col-44)),
+
+            ((center_row+12), (center_col-50)),
+            ((center_row+13), (center_col-50)),
+            ((center_row+14), (center_col-50)),
+            ((center_row+15), (center_col-50)),
+            ((center_row+16), (center_col-50)),
+            ((center_row+17), (center_col-50)),
+            ((center_row+18), (center_col-50)),
+            ((center_row+19), (center_col-50)),
+            ((center_row+21), (center_col-50)),
+        ];
+
+        for (row, col) in r_coords.iter() {
+            if let Some(cell) = self.current_cells.get_mut(*row, *col) {
+                *cell = true;
+            }
+        }
+    }
+
 
 }
 
