@@ -15,6 +15,9 @@ use ratatui::{
     Frame
 };
 
+use std::thread;
+use std::time::Duration;
+
 use crate::grid::LifeGrid;
 
 
@@ -58,17 +61,20 @@ impl App {
             let live_coords = self.grid.build_coords();
             terminal.draw(|frame| self.ui(frame, &live_coords))?;
             self.handle_events()?;
+            thread::sleep(Duration::from_millis(100));
         }
         Ok(())
     }
 
     fn handle_events(&mut self) -> io::Result<()> {
-        match event::read()? {
-            Event::Key(key_event) if key_event.kind == KeyEventKind::Press => {
-                self.handle_key_event(key_event)
+        if event::poll(std::time::Duration::from_millis(5))? {
+            match event::read()? {
+                Event::Key(key_event) if key_event.kind == KeyEventKind::Press => {
+                    self.handle_key_event(key_event)
+                }
+                _ => {}
             }
-            _ => {}
-        };
+        }
         Ok(())
     }
 

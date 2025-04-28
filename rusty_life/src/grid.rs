@@ -33,9 +33,9 @@ impl LifeGrid {
 
                 let is_alive = *self.current_cells.get(row as usize, col as usize).unwrap_or(&false);
                 let next_state = match (is_alive, live_neighbors) {
-                    (true, 2) | (true, 3) => true, // Survives
-                    (false, 3) => true,            // Becomes alive
-                    _ => false,                    // Dies or stays dead
+                    (true, 2) | (true, 3) => true, 
+                    (false, 3) => true,            
+                    _ => false,                    
                 };
                 self.next_cells.set(row as usize, col as usize, next_state).unwrap();
             }
