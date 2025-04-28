@@ -100,5 +100,24 @@ impl LifeGrid {
         }
     }
 
+    pub fn spawn_r_center(&mut self) {
+        let center_row = self.height as usize / 2;
+        let center_col = self.width as usize / 2;
+
+        let r_coords = [
+            (center_row, center_col),
+            (center_row, center_col + 1),
+            (center_row, center_col - 1),
+            (center_row -1, center_col),
+            (center_row +1, center_col + 1),
+        ];
+
+        for (row, col) in r_coords.iter() {
+            if let Some(cell) = self.current_cells.get_mut(*row, *col) {
+                *cell = true;
+            }
+        }
+    }
+
 }
 

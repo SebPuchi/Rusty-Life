@@ -53,7 +53,7 @@ impl App {
     }
 
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
-        self.grid.spawn_glider_center();
+        self.grid.spawn_r_center();
 
         while !self.exit {
             // fetch and draw next generation 
