@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+array2d = "0.3.2"
 clap = { version = "4.5.26", features = ["cargo", "derive"] }
 crossterm = "0.28.1"
 ratatui = "0.29.0"
