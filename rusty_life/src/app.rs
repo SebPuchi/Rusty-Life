@@ -33,6 +33,9 @@ pub struct App {
 //App behaviour
 impl App {
     pub fn new(terminal: &mut DefaultTerminal) -> Self {
+
+
+        set_up_term(terminal);
         let current_frame_area = terminal
             .get_frame()
             .area();
@@ -55,8 +58,6 @@ impl App {
     }
 
     pub fn run(&mut self, terminal: &mut DefaultTerminal) -> io::Result<()> {
-        //self.grid.spawn_r_center();
-        //self.grid.spawn_glider_center();
         self.grid.spawn_bc_center();
 
         while !self.exit {
